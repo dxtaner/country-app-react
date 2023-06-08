@@ -35,7 +35,7 @@ const CountryInfo = () => {
         <Link to="/">Back</Link>
       </button>
 
-      {isLoading && !error && <h4>Loading........</h4>}
+      {isLoading && !error && <h4>Loading......</h4>}
       {error && !isLoading && <h4>{error}</h4>}
 
       {country?.map((country, index) => (
