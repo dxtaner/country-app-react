@@ -27,25 +27,25 @@ const AllCountries = () => {
 
     const getCountryByName = async (countryName) => {
         try {
-          if (countryName.trim() === "") {
-            // Boş arama yapılıyor, uyarı mesajı göster
-            alert("Please enter a country name.");
-            return;
-          }
-      
-          const res = await fetch(`${apiURL}/name/${countryName}`);
-      
-          if (!res.ok) throw new Error("Not found any country!");
-      
-          const data = await res.json();
-          setCountries(data);
-          setIsLoading(false);
+            if (countryName.trim() === "") {
+                // Boş arama yapılıyor, uyarı mesajı göster
+                alert("Please enter a country name.");
+                return;
+            }
+
+            const res = await fetch(`${apiURL}/name/${countryName}`);
+
+            if (!res.ok) throw new Error("Not found any country!");
+
+            const data = await res.json();
+            setCountries(data);
+            setIsLoading(false);
         } catch (error) {
-          setIsLoading(false);
-          setError(error.message);
+            setIsLoading(false);
+            setError(error.message);
         }
-      };
-      
+    };
+
     const getCountryByRegion = async (regionName) => {
         try {
             const res = await fetch(`${apiURL}/region/${regionName}`);
@@ -89,13 +89,14 @@ const AllCountries = () => {
                             </div>
 
                             <div className="countryData">
+
                                 <h3>{country.name.common}</h3>
+                                <h6>Official Name: {country.name.official}</h6>
                                 <h6>Capital: {country.capital}</h6>
                                 <h6>Population: {new Intl.NumberFormat().format(country.population)}</h6>
                                 <h6>Region: {country.region}</h6>
                                 <h6>Area: {country.area}</h6>
-                                <h6>Official Name: {country.name.official}</h6>
-                               
+
                             </div>
                         </div>
                     </Link>
